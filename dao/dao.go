@@ -66,8 +66,8 @@ func GetAllBlog() []primitive.M{
 	return results
 }
 
-//InsertOneTask One blog to mongodb
-func InsertOneTask(blog models.Blog){
+//InsertOneBlog One blog to mongodb
+func InsertOneBlog(blog models.Blog){
 	insertResult, err := collection.InsertOne(context.Background(),blog)
 
 	if err != nil {
