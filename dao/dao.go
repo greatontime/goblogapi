@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/greatontime/goblogapi/models"
+
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -43,7 +45,6 @@ func init(){
 }
 
 //GetAllBlog from db
-
 func GetAllBlog() []primitive.M{
 	cur, err := collection.Find(context.Background(), bson.D{{}})
 	if err != nil {
@@ -63,4 +64,14 @@ func GetAllBlog() []primitive.M{
 	}
 	cur.Close(context.Background())
 	return results
+}
+
+//InsertOneTask One blog to mongodb
+func InsertOneTask(blog models.Blog){
+	insertResult, err := collection.InsertOne(context.Background(),blog)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Inserted a Single Record",insertResult.InsertedID)
 }
