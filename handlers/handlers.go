@@ -38,7 +38,7 @@ func ActiveBlog(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
 	params := mux.Vars(r)
-	BlogActive(params["id"])
+	dao.BlogActive(params["id"])
 	json.NewEncoder(w).Encode(params["id"])
 }
 
@@ -50,6 +50,6 @@ func UnActiveBlog(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
 	params := mux.Vars(r)
-	BlogUnActive(params["id"])
+	dao.BlogUnActive(params["id"])
 	json.NewEncoder(w).Encode(params["id"])
 }
