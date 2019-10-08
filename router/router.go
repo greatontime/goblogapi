@@ -11,6 +11,7 @@ func Router() *mux.Router {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/api/blog",handlers.GetAllBlog).Methods("GET","OPTIONS")
+	router.HandleFunc("/api/blog",handlers.CreateBlog).Methods("POST","OPTIONS")
 
 	return router
 }
