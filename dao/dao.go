@@ -75,3 +75,27 @@ func InsertOneBlog(blog models.Blog){
 	}
 	fmt.Println("Inserted a Single Record",insertResult.InsertedID)
 }
+//BlogActive function for active blog
+func BlogActive(blog string){
+	fmt.Println(blog)
+	id, _ := primitive.ObjectIDFromHex(blog)
+	filter := bson.M{"_id":id}
+	update := bson.M{"$set":bson.M{"status":true}}
+	result, err := collection.UpdateOne(context.Background(),filter,update)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("modified count:",result.ModifiedCount)
+}
+//BlogUnActive function for unactive blog
+func BlogUnActive(blog string){
+	fmt.Println(blog)
+	id, _ := primitive.ObjectIDFromHex(blog)
+	filter := bson.M{"_id":id}
+	update := bson.M{"$set":bson.M{"status":false}}
+	result, err := collection.UpdateOne(context.Background(),filter,update)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("modified count:",result.ModifiedCount)
+}

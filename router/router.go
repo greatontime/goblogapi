@@ -12,6 +12,8 @@ func Router() *mux.Router {
 
 	router.HandleFunc("/api/blog",handlers.GetAllBlog).Methods("GET","OPTIONS")
 	router.HandleFunc("/api/blog",handlers.CreateBlog).Methods("POST","OPTIONS")
+	router.HandleFunc("/api/blog/{id}", handlers.ActiveBlog).Methods("PUT", "OPTIONS")
+	router.HandleFunc("/api/unactiveblog/{id}", handlers.UnActiveBlog).Methods("PUT", "OPTIONS")
 
 	return router
 }

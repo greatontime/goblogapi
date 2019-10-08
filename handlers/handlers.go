@@ -29,3 +29,27 @@ func CreateBlog(w http.ResponseWriter, r *http.Request){
 	dao.InsertOneBlog(blog)
 	json.NewEncoder(w).Encode(blog)
 }
+
+//ActiveBlog handler to call function activeblog
+func ActiveBlog(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Content-Type", "application/x-www-form-urlencoded")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "PUT")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+	params := mux.Vars(r)
+	BlogActive(params["id"])
+	json.NewEncoder(w).Encode(params["id"])
+}
+
+//UnActiveBlog handler to call function activeblog
+func UnActiveBlog(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Content-Type", "application/x-www-form-urlencoded")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "PUT")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+	params := mux.Vars(r)
+	BlogUnActive(params["id"])
+	json.NewEncoder(w).Encode(params["id"])
+}
