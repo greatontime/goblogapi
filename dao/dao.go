@@ -99,3 +99,23 @@ func BlogUnActive(blog string){
 	}
 	fmt.Println("modified count:",result.ModifiedCount)
 }
+//DeleteOneBlog delete one blog by id
+func DeleteOneBlog(blog string){
+	fmt.Println(blog)
+	id, _ := primitive.ObjectIDFromHex(blog)
+	filter := bson.M{"_id":id}
+	d, err := collection.DeleteOne(context.Background(),filter)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Deleted Document",d.DeleteCount)
+}
+//DeleteAllBlog delete all blog
+func DeleteAllBlog() int64{
+	d,err := collection.DeleteMany(context.Background(),bson.D{{}},nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Deleted Document Many !!!",d.DeletedCount)
+	return d.DeletedCount
+}
