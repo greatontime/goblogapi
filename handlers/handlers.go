@@ -1,20 +1,17 @@
 package handlers
 
 import (
-	"context"
 	"encoding/json"
-	"fmt"
-	"log"
 	"net/http"
 
 
-	"github.com/greatontime/goblogapi/models"
 	"github.com/greatontime/goblogapi/dao"
-	
-	"github.com/gorilla/mux"
-
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 )
+
+//GetAllBlog handler
+func GetAllBlog(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Context-Type","application/x-www-form-urlencoded")
+	w.Header().Set("Access-Control-Allow-Origin","*")
+	payload := dao.GetAllBlog()
+	json.NewEncoder(w).Encode(payload)
+}

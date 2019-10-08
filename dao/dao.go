@@ -42,9 +42,9 @@ func init(){
 	fmt.Println("Collection instance created !!")
 }
 
-//getAllBlog from db
+//GetAllBlog from db
 
-func getAllBlog() []primitive.M{
+func GetAllBlog() []primitive.M{
 	cur, err := collection.Find(context.Background(), bson.D{{}})
 	if err != nil {
 		log.Fatal(err)
