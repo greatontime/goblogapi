@@ -6,6 +6,7 @@ import (
 
 
 	"github.com/greatontime/goblogapi/dao"
+	"github.com/greatontime/goblogapi/models"
 )
 
 //GetAllBlog handler
@@ -17,7 +18,7 @@ func GetAllBlog(w http.ResponseWriter, r *http.Request){
 }
 
 //CreateBlog create blog
-func CreateBlog(w http.ResponWriter, r *http.Request){
+func CreateBlog(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Context-Type", "application/x-www-form-urlencoded")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST")
