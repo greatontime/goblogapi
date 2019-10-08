@@ -108,7 +108,7 @@ func DeleteOneBlog(blog string){
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Deleted Document",d.DeleteCount)
+	fmt.Println("Deleted Document",d.DeletedCount)
 }
 //DeleteAllBlog delete all blog
 func DeleteAllBlog() int64{
